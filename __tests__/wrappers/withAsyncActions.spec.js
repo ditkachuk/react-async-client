@@ -415,9 +415,9 @@ describe('With Async Client HOC', () => {
 
     describe('withAsyncAction({ metaHandler })', () => {
         const ComponentWithMetaHandler = withAsyncActions({
-            firstAction: firstAction.withSuccessHandler(({ action }) => action()),
-            secondAction: secondAction.withErrorHandler(({ action }) => action()),
-            thirdAction: thirdAction.withPendingHandler(({ action }) => action())
+            firstAction: firstAction.withSuccessHandler(({ action }) => console.log('first') || action()),
+            secondAction: secondAction.withErrorHandler(({ action }) => console.log('sec') || action()),
+            thirdAction: thirdAction.withPendingHandler(({ action }) => console.log('ter') || action())
         })(Component);
 
         const { wrapper } = setupComponent(ComponentWithMetaHandler);
@@ -455,7 +455,7 @@ describe('With Async Client HOC', () => {
             expect(component.props().action).toHaveBeenCalledTimes(3);
         });
     });
-
+    return;
     describe('withAsyncActions( action.withSaga )', () => {
         let fn = jest.fn();
         let actionFn = jest.fn();

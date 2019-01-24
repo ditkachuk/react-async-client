@@ -53,7 +53,7 @@ export const withAsyncHandlers = actionsConfig => {
                     }
                 }, actionHandlers);
             }, actions);
-
+            console.log(actions, sagas);
             if (sagas.length) {
                 this.Component = withSagas(sagas)(WrappedComponent);
             } else {
